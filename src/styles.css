@@ -1,1 +1,9 @@
-/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.hero-img {
+  background-image: url("src\assets\img\pexels-yan-krukau-9072216.jpg");
+  background-size: cover;
+  background-position: center;
+}
