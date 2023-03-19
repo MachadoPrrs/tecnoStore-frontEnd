@@ -71,7 +71,12 @@
             </button>
             <p class="mt-4 text-sm">
               Ya tienes cuenta?
-              <span class="underline cursor-pointer"> Inicia sesión</span>
+              <a
+                class="underline cursor-pointer"
+                [routerLink]="['/auth/login']"
+              >
+                Inciar sesion
+              </a>
             </p>
           </div>
           <!--  -->

@@ -58,7 +58,11 @@
             </button>
             <p class="mt-4 text-sm">
               Aún no tienes cuenta?
-              <span class="underline cursor-pointer"> Crea una cuenta</span>
+              <a
+                class="underline cursor-pointer"
+                [routerLink]="['/auth/signup']"
+                >Crea una cuenta</a
+              >
             </p>
           </div>
           <!--  -->
