@@ -32,17 +32,21 @@
             pariatur!
           </p>
         </div>
-        <form>
+        <form (ngSubmit)="login()">
           <div class="space-y-4">
             <input
               type="email"
               placeholder="Correo Electronico"
               class="block text-sm md:text-base py-3 px-4 rounded-lg w-full border outline-none"
+              name="email"
+              [(ngModel)]="user.email"
             />
             <input
               type="password"
               placeholder="Contraseña"
               class="block text-sm md:text-base py-3 px-4 rounded-lg w-full border outline-none"
+              name="password"
+              [(ngModel)]="user.password"
             />
           </div>
           <div class="text-center mt-6">

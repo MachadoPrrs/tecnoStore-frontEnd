@@ -31,27 +31,35 @@
             Crea tu cuenta para poder acceder a los productos
           </p>
         </div>
-        <form>
+        <form (ngSubmit)="crearUsuario()">
           <div class="space-y-4">
             <input
               type="text"
               placeholder="Nombre"
               class="block text-sm md:text-base py-3 px-4 rounded-lg w-full border outline-none"
+              name="name"
+              [(ngModel)]="user.name"
             />
             <input
               type="email"
               placeholder="Correo Electronico"
               class="block text-sm md:text-base py-3 px-4 rounded-lg w-full border outline-none"
+              name="email"
+              [(ngModel)]="user.email"
             />
             <input
               type="password"
               placeholder="Contraseña"
               class="block text-sm md:text-base py-3 px-4 rounded-lg w-full border outline-none"
+              name="password"
+              [(ngModel)]="user.password"
             />
             <input
               type="password"
               placeholder="Repetir Contraseña"
               class="block text-sm md:text-base py-3 px-4 rounded-lg w-full border outline-none"
+              name="passwordConfirm"
+              [(ngModel)]="user.passwordConfirm"
             />
           </div>
           <div class="text-center mt-6">
