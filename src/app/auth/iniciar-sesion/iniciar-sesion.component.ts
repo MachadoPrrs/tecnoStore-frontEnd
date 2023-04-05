@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ILogin } from '../../interfaces/auth/login.interface';
 import { AuthService } from '../service/auth.service';
 import { IResponse } from '../../interfaces/auth/response.interface';
@@ -19,6 +19,15 @@ export class IniciarSesionComponent {
   };
 
   constructor(private authService: AuthService, private ruta: Router) {}
+
+  // verificar si hay token
+  // ngOnInit(): void {
+  //   this.verificarLocalStorage();
+  // }
+
+  verificarLocalStorage(): void {
+    if (localStorage.getItem('token')) this.ruta.navigate(['']);
+  }
 
   // funcion para validar email
   validateEmail(email: string): boolean {

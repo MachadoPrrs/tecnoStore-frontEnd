@@ -1,9 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 .hero-img {
   background-image: url("src\assets\img\pexels-yan-krukau-9072216.jpg");
   background-size: cover;
   background-position: center;
+}
+
+.home1-img {
+  background-image: url("src\assets\img\pc-img.jpg");
+  /* background-size: cover;
+  background-position: top; */
+}
+
+.home2-img {
+  background-image: url("src\assets\img\pc2-img.jpg");
+}
+
+.home3-img {
+  background-image: url("src\assets\img\pc-3.jpg");
 }

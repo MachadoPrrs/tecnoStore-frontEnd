@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { IniciarSesionComponent } from './iniciar-sesion/iniciar-sesion.component';
 import { CrearCuentaComponent } from './crear-cuenta/crear-cuenta.component';
+import { ErrorPageComponent } from '../shared/error-page/error-page.component';
 
 const routes: Routes = [
   {
@@ -9,7 +10,7 @@ const routes: Routes = [
     children: [
       { path: 'login', component: IniciarSesionComponent },
       { path: 'signup', component: CrearCuentaComponent },
-      { path: '**', redirectTo: 'login' },
+      { path: '**', component: ErrorPageComponent },
     ],
   },
 ];
