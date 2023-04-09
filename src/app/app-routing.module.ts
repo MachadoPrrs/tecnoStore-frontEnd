@@ -4,11 +4,6 @@ import { ErrorPageComponent } from './shared/error-page/error-page.component';
 
 const routes: Routes = [
   {
-    path: '',
-    pathMatch: 'full',
-    redirectTo: 'home/productos',
-  },
-  {
     path: 'home',
     loadChildren: () => import('./home/home.module').then((m) => m.HomeModule),
   },

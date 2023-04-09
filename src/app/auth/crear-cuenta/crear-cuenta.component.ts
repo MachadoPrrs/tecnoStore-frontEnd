@@ -66,7 +66,7 @@ export class CrearCuentaComponent {
     this.authSerive.crearCuenta(this.user).subscribe({
       next: (data: IResponse) => {
         localStorage.setItem('token', data.token);
-        this.ruta.navigate(['']);
+        this.ruta.navigate(['/home']);
       },
       error: (err) => this.mostrarMensaje('Algo salio mal, intenta de nuevo'),
     });

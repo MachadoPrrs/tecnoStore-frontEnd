@@ -10,7 +10,7 @@ import { Notyf } from 'notyf';
   templateUrl: './iniciar-sesion.component.html',
   styleUrls: ['./iniciar-sesion.component.css'],
 })
-export class IniciarSesionComponent {
+export class IniciarSesionComponent implements OnInit {
   notyf = new Notyf();
 
   user: ILogin = {
@@ -21,12 +21,12 @@ export class IniciarSesionComponent {
   constructor(private authService: AuthService, private ruta: Router) {}
 
   // verificar si hay token
-  // ngOnInit(): void {
-  //   this.verificarLocalStorage();
-  // }
+  ngOnInit(): void {
+    this.verificarLocalStorage();
+  }
 
   verificarLocalStorage(): void {
-    if (localStorage.getItem('token')) this.ruta.navigate(['']);
+    if (localStorage.getItem('token')) this.ruta.navigate(['home/productos']);
   }
 
   // funcion para validar email
@@ -64,7 +64,7 @@ export class IniciarSesionComponent {
     this.authService.iniciarSesion(this.user).subscribe({
       next: (data: IResponse) => {
         localStorage.setItem('token', data.token);
-        this.ruta.navigate(['']);
+        this.ruta.navigate(['/home/productos']);
       },
       error: () =>
         this.mostrarMensaje(
