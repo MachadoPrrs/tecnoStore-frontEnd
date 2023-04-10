@@ -41,10 +41,7 @@ export class ProductsComponent implements OnInit {
 
   getProducts() {
     this.homeService.getProducts().subscribe({
-      next: (data) => {
-        this.Productos = data;
-        console.log(this.Productos);
-      },
+      next: (data) => (this.Productos = data),
       error: (err) => console.log(err),
     });
   }

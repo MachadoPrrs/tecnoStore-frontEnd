@@ -7,6 +7,8 @@ import { ProductsComponent } from './pages/products/products.component';
 import { ProductComponent } from './pages/product/product.component';
 import { BuscarComponent } from './pages/buscar/buscar.component';
 import { CarritoComponent } from './pages/carrito/carrito.component';
+import { ContactoComponent } from './pages/contacto/contacto.component';
+import { FooterComponent } from './pages/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +18,8 @@ import { CarritoComponent } from './pages/carrito/carrito.component';
     ProductComponent,
     BuscarComponent,
     CarritoComponent,
+    ContactoComponent,
+    FooterComponent,
   ],
   imports: [CommonModule, HomeRoutingModule],
 })
