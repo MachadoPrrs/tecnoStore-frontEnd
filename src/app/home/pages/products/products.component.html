@@ -112,10 +112,17 @@
           </div>
           <div class="px-5 py-3">
             <h3 class="text-gray-700 uppercase">{{ item.name }}</h3>
+            <span class="text-gray-500">₡{{ item.price }}</span>
             <div class="flex items-center justify-between mt-2">
-              <span class="text-gray-500">₡{{ item.price }}</span>
               <button
-                class="bg-red-700 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full"
+                [routerLink]="['/home/', item._id]"
+                class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 rounded-full"
+              >
+                Ver
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+              <button
+                class="bg-yellow-500 hover:bg-yellow-400 text-white font-bold py-2 px-4 rounded-full"
                 (click)="agregarFavorito(item)"
               >
                 <i class="fa-solid fa-heart"></i>
