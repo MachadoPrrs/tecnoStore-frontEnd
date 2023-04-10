@@ -37,4 +37,9 @@ export class HomeService {
       .get<Carritos>(url)
       .pipe(map((response) => response.data.carritos));
   }
+
+  deleteShopCart(_id: string): Observable<any> {
+    const url = `${this.apiURL}${this.shopCart}/${_id}`;
+    return this.http.delete<any>(url);
+  }
 }

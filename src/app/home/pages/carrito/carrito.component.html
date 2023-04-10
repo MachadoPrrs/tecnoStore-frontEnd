@@ -22,7 +22,7 @@
             <p class="text-lg font-semibold">₡{{ item.price }}</p>
           </div>
           <div class="text-lg font-semibold">
-            <button class="btn">
+            <button class="btn" (click)="deleteCart(item._id)">
               <i class="fas fa-trash-alt text-red-700"></i>
             </button>
             <!-- ICON -->
