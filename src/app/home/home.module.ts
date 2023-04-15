@@ -9,6 +9,7 @@ import { BuscarComponent } from './pages/buscar/buscar.component';
 import { CarritoComponent } from './pages/carrito/carrito.component';
 import { ContactoComponent } from './pages/contacto/contacto.component';
 import { FooterComponent } from './pages/footer/footer.component';
+import { ComponentesComponent } from './pages/componentes/componentes.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { FooterComponent } from './pages/footer/footer.component';
     CarritoComponent,
     ContactoComponent,
     FooterComponent,
+    ComponentesComponent,
   ],
   imports: [CommonModule, HomeRoutingModule],
 })

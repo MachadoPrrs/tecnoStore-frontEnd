@@ -7,6 +7,7 @@ import { BuscarComponent } from './pages/buscar/buscar.component';
 import { CarritoComponent } from './pages/carrito/carrito.component';
 import { ErrorPageComponent } from '../shared/error-page/error-page.component';
 import { ContactoComponent } from './pages/contacto/contacto.component';
+import { ComponentesComponent } from './pages/componentes/componentes.component';
 
 const routes: Routes = [
   {
@@ -14,8 +15,9 @@ const routes: Routes = [
     component: HomeComponent,
     children: [
       { path: 'productos', component: ProductsComponent },
-      { path: 'buscar', component: BuscarComponent },
+      // { path: 'buscar', component: BuscarComponent },
       { path: 'carrito', component: CarritoComponent },
+      { path: 'componentes', component: ComponentesComponent },
       { path: 'contacto', component: ContactoComponent },
       { path: ':id', component: ProductComponent },
       { path: '**', component: ErrorPageComponent },

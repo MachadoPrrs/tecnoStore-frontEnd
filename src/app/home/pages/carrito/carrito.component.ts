@@ -3,6 +3,8 @@ import { Product } from 'src/app/interfaces/home/product.interface';
 import { HomeService } from '../../services/home.service';
 import { Carrito } from 'src/app/interfaces/home/carrito.interface';
 import { Notyf } from 'notyf';
+import { HttpHeaders } from '@angular/common/http';
+import jwt_decode from 'jwt-decode';
 @Component({
   selector: 'app-carrito',
   templateUrl: './carrito.component.html',
@@ -35,16 +37,35 @@ export class CarritoComponent implements OnInit {
     });
   }
 
+  // getCart() {
+  //   this.homeService.getShopCart().subscribe({
+  //     next: (data: Carrito[]) => {
+  //       this.Productos = data;
+  //       this.Productos.forEach((producto) => {
+  //         this.Total += parseInt(producto.price);
+  //       });
+  //     },
+  //     error: (err: any) => console.log(err),
+  //   });
+  // }
+
   getCart() {
-    this.homeService.getShopCart().subscribe({
-      next: (data: Carrito[]) => {
-        this.Productos = data;
-        this.Productos.forEach((producto) => {
-          this.Total += parseInt(producto.price);
-        });
-      },
-      error: (err: any) => console.log(err),
-    });
+    const token: string | null = localStorage.getItem('token');
+
+    if (token !== null) {
+      const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+      // const decoded: any = jwt_decode(token);
+      // const user = decoded.id;
+      this.homeService.getShopCart(headers).subscribe({
+        next: (data: Carrito[]) => {
+          this.Productos = data;
+          this.Productos.forEach((producto) => {
+            this.Total += parseInt(producto.price);
+          });
+        },
+        error: (err: any) => console.log(err),
+      });
+    }
   }
 
   deleteCart(_id: string) {

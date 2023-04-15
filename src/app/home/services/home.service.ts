@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 import { Product, Products } from '../../interfaces/home/product.interface';
 import { Carrito, Carritos } from 'src/app/interfaces/home/carrito.interface';
@@ -29,10 +29,17 @@ export class HomeService {
   }
 
   // Obtener los productos del carrito
-  getShopCart(): Observable<Carrito[]> {
+  // getShopCart(): Observable<Carrito[]> {
+  //   const url = `${this.apiURL}${this.shopCart}`;
+  //   return this.http
+  //     .get<Carritos>(url)
+  //     .pipe(map((response) => response.data.carritos));
+  // }
+
+  getShopCart(headers: any): Observable<Carrito[]> {
     const url = `${this.apiURL}${this.shopCart}`;
     return this.http
-      .get<Carritos>(url)
+      .get<Carritos>(url, { headers })
       .pipe(map((response) => response.data.carritos));
   }
 

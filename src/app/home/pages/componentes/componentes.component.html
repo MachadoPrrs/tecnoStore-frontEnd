@@ -1,0 +1,63 @@
+<main class="my-8">
+  <div class="container mx-auto px-6">
+    <div class="mt-16">
+      <h3 class="text-gray-600 text-2xl font-medium">Todos los productos</h3>
+      <div class="pt-2 relative mx-auto text-gray-600">
+        <input
+          class="border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none"
+          type="search"
+          name="buscar"
+          placeholder="buscar"
+        />
+        <button
+          type="submit"
+          class="bg-sky-500 hover:bg-sky-400 text-white font-bold py-2 px-4 rounded-lg"
+        >
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </div>
+      <div
+        class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6"
+      >
+        <div
+          class="mx-auto mt-11 w-80 overflow-hidden rounded-lg bg-white shadow-md hover:shadow-xl"
+          *ngFor="let item of Productos"
+        >
+          <img
+            class="h-48 w-full object-cover object-center"
+            [src]="'assets/img/' + item.photo"
+            alt="Product Image"
+          />
+          <div class="p-4">
+            <h2 class="mb-2 text-lg font-medium text-gray-900">
+              {{ item.name }}
+            </h2>
+            <p class="mb-2 text-base text-gray-700">
+              {{ item.descripcion }}
+            </p>
+            <div class="flex items-center">
+              <p class="mr-2 text-lg font-semibold text-gray-900">
+                ₡{{ item.price }}
+              </p>
+            </div>
+            <div class="flex items-center justify-between mt-2">
+              <button
+                [routerLink]="['/home/', item._id]"
+                class="bg-gray-900 hover:bg-gray-800 text-white font-bold py-2 px-4 rounded-full"
+              >
+                Ver
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+              <button
+                class="bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 rounded-full"
+                (click)="agregarFavorito(item)"
+              >
+                <i class="fa-solid fa-heart"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

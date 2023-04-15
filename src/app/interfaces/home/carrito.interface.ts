@@ -16,4 +16,5 @@ export interface Carrito {
   descripcion: string;
   price: string;
   category: string;
+  user: string;
 }

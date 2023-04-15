@@ -3,17 +3,17 @@ import { Product } from 'src/app/interfaces/home/product.interface';
 import { HomeService } from '../../services/home.service';
 import { Notyf } from 'notyf';
 import jwt_decode from 'jwt-decode';
-
 @Component({
-  selector: 'app-products',
-  templateUrl: './products.component.html',
-  styleUrls: ['./products.component.css'],
+  selector: 'app-componentes',
+  templateUrl: './componentes.component.html',
+  styleUrls: ['./componentes.component.css'],
 })
-export class ProductsComponent implements OnInit {
+export class ComponentesComponent implements OnInit {
   Productos: Product[] = [];
   notyf = new Notyf();
 
   constructor(private homeService: HomeService) {}
+
   ngOnInit(): void {
     this.getProducts();
   }
