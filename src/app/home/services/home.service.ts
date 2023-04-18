@@ -13,6 +13,7 @@ export class HomeService {
   private apiURL: string = 'http://localhost:3000/';
   private getEndPoint: string = 'api/v1/products/';
   private shopCart: string = 'api/v1/carrito/';
+  private searchEndpoint: string = 'api/v1/search';
 
   // Obtener todos los productos
   getProducts(): Observable<Product[]> {
@@ -55,5 +56,11 @@ export class HomeService {
     return this.http
       .get<any>(url)
       .pipe(map((response) => response.data.product));
+  }
+
+  searchProduct(termino: string): Observable<any> {
+    const modelo = 'products';
+    const url = `${this.apiURL}${this.searchEndpoint}/${modelo}/${termino}`;
+    return this.http.get<any>(url).pipe(map((response) => response.results[0]));
   }
 }

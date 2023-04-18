@@ -39,4 +39,8 @@ export class ProductComponent implements OnInit {
       },
     });
   }
+
+  regresar() {
+    this.router.navigate(['/home/productos']);
+  }
 }

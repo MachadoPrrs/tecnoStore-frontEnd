@@ -10,7 +10,7 @@ import { CarritoComponent } from './pages/carrito/carrito.component';
 import { ContactoComponent } from './pages/contacto/contacto.component';
 import { FooterComponent } from './pages/footer/footer.component';
 import { ComponentesComponent } from './pages/componentes/componentes.component';
-
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     HomeComponent,
@@ -23,6 +23,6 @@ import { ComponentesComponent } from './pages/componentes/componentes.component'
     FooterComponent,
     ComponentesComponent,
   ],
-  imports: [CommonModule, HomeRoutingModule],
+  imports: [CommonModule, HomeRoutingModule, FormsModule],
 })
 export class HomeModule {}

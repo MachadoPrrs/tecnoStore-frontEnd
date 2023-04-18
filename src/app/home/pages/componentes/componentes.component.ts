@@ -12,10 +12,30 @@ export class ComponentesComponent implements OnInit {
   Productos: Product[] = [];
   notyf = new Notyf();
 
+  product: Product = {
+    _id: '',
+    category: '',
+    descripcion: '',
+    fabricante: '',
+    name: '',
+    photo: '',
+    price: '',
+    ratingsAverage: 0,
+  };
+
+  hay_error: boolean = false;
+  existe_termino: boolean = false;
+  // buscador
+  terminoBusqueda = {
+    termino: '',
+  };
+
   constructor(private homeService: HomeService) {}
 
   ngOnInit(): void {
-    this.getProducts();
+    if (!this.existe_termino) {
+      this.getProducts();
+    }
   }
 
   // mostrar mensaje de exito
@@ -78,5 +98,28 @@ export class ComponentesComponent implements OnInit {
       next: (data) => (this.Productos = data),
       error: (err) => console.log(err),
     });
+  }
+
+  // BUSCADOR
+  buscar() {
+    this.homeService.searchProduct(this.terminoBusqueda.termino).subscribe({
+      next: (data) => {
+        this.product = data;
+        console.log(this.product); // Aquí se muestra el valor actualizado de this.product
+      },
+      error: (err) =>
+        this.mostrarMensajeError(
+          `No se encotró el producto ${this.terminoBusqueda.termino}`
+        ),
+    });
+    this.existe_termino = true;
+    this.terminoBusqueda = {
+      termino: '',
+    };
+  }
+
+  verProductos() {
+    this.existe_termino = false;
+    console.log(this.existe_termino);
   }
 }
