@@ -64,7 +64,11 @@ export class IniciarSesionComponent implements OnInit {
     this.authService.iniciarSesion(this.user).subscribe({
       next: (data: IResponse) => {
         localStorage.setItem('token', data.token);
-        this.ruta.navigate(['/home/productos']);
+        if (data.verificarAdmin) {
+          this.ruta.navigate(['/admin/dashboard']);
+        } else {
+          this.ruta.navigate(['/home/productos']);
+        }
       },
       error: () =>
         this.mostrarMensaje(
