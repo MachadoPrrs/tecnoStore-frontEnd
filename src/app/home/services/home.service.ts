@@ -29,14 +29,6 @@ export class HomeService {
     return this.http.post<any>(url, cart);
   }
 
-  // Obtener los productos del carrito
-  // getShopCart(): Observable<Carrito[]> {
-  //   const url = `${this.apiURL}${this.shopCart}`;
-  //   return this.http
-  //     .get<Carritos>(url)
-  //     .pipe(map((response) => response.data.carritos));
-  // }
-
   getShopCart(headers: any): Observable<Carrito[]> {
     const url = `${this.apiURL}${this.shopCart}`;
     return this.http
@@ -62,5 +54,18 @@ export class HomeService {
     const modelo = 'products';
     const url = `${this.apiURL}${this.searchEndpoint}/${modelo}/${termino}`;
     return this.http.get<any>(url).pipe(map((response) => response.results[0]));
+  }
+  // deleteAll(user: string): Observable<any> {
+  //   const url = `${this.apiURL}${this.shopCart}/deleteAll/${user}`;
+  //   return this.http.delete<any>(url);
+  // }
+
+  deleteAll(): Observable<any> {
+    const url = `${this.apiURL}${this.shopCart}/deleteAll`;
+    const headers = new HttpHeaders().set(
+      'Authorization',
+      `Bearer ${localStorage.getItem('token')}`
+    );
+    return this.http.delete<any>(url, { headers });
   }
 }

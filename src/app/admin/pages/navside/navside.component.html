@@ -1,0 +1,73 @@
+<aside
+  class="ml-[-100%] fixed z-10 top-0 pb-3 px-6 w-full flex flex-col justify-between h-screen border-r bg-gray-900 transition duration-300 md:w-4/12 lg:ml-0 lg:w-[25%] xl:w-[20%] 2xl:w-[15%]"
+>
+  <div>
+    <nav
+      class="flex flex-col w-64 h-screen px-4 tex-gray-900 border border-gray-900"
+    >
+      <div class="mt-10 mb-4">
+        <ul class="ml-4">
+          <li
+            class="mb-2 px-4 py-4 text-gray-100 flex flex-row border-gray-300 hover:text-black hover:bg-gray-300 hover:font-bold rounded-lg cursor-pointer"
+          >
+            <i class="fa-solid fa-bars"></i>
+            <a routerLink="/admin/agregar">
+              <span class="ml-2">Dashboard</span>
+            </a>
+          </li>
+          <li
+            class="mb-2 px-4 py-4 text-gray-100 flex flex-row border-gray-300 hover:text-black hover:bg-gray-300 hover:font-bold rounded-lg cursor-pointer"
+          >
+            <span>
+              <i class="fa-solid fa-plus"></i>
+            </span>
+            <a routerLink="/admin/agregar">
+              <span class="ml-2">Crear Productos</span>
+            </a>
+          </li>
+          <li
+            class="mb-2 px-4 py-4 text-gray-100 flex flex-row border-gray-300 hover:text-black hover:bg-gray-300 hover:font-bold rounded-lg cursor-pointer"
+          >
+            <span>
+              <i class="fa-solid fa-list-ol"></i>
+            </span>
+            <a>
+              <span class="ml-2">Historial</span>
+            </a>
+          </li>
+          <li
+            class="mb-2 px-4 py-4 text-gray-100 flex flex-row border-gray-300 hover:text-black hover:bg-gray-300 hover:font-bold rounded-lg cursor-pointer"
+          >
+            <span>
+              <i class="fa-solid fa-list"></i>
+            </span>
+            <a>
+              <span class="ml-2">Ver Productos</span>
+            </a>
+          </li>
+          <li
+            class="mb-2 px-4 py-4 text-gray-100 flex flex-row border-gray-300 hover:text-black hover:bg-gray-300 hover:font-bold rounded-l cursor-pointerg"
+          >
+            <span>
+              <i class="fa-solid fa-gears"></i>
+            </span>
+            <a>
+              <span class="ml-2">Ajustes</span>
+            </a>
+          </li>
+
+          <li
+            (click)="logout()"
+            class="mb-2 px-4 py-4 text-gray-100 flex flex-row border-gray-300 hover:text-black hover:bg-gray-300 hover:font-bold rounded-l cursor-pointerg"
+          >
+            <span>
+              <i class="fa-solid fa-right-from-bracket"></i>
+            </span>
+            <span class="ml-2">Salir</span>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+  <!-- /NAV  -->
+</aside>

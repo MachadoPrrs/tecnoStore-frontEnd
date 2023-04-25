@@ -22,12 +22,12 @@ export class IniciarSesionComponent implements OnInit {
 
   // verificar si hay token
   ngOnInit(): void {
-    this.verificarLocalStorage();
+    // this.verificarLocalStorage();
   }
 
-  verificarLocalStorage(): void {
-    if (localStorage.getItem('token')) this.ruta.navigate(['home/productos']);
-  }
+  // verificarLocalStorage(): void {
+  //   if (localStorage.getItem('token')) this.ruta.navigate(['home/productos']);
+  // }
 
   // funcion para validar email
   validateEmail(email: string): boolean {
@@ -65,7 +65,7 @@ export class IniciarSesionComponent implements OnInit {
       next: (data: IResponse) => {
         localStorage.setItem('token', data.token);
         if (data.verificarAdmin) {
-          this.ruta.navigate(['/admin/dashboard']);
+          this.ruta.navigate(['/admin/agregar']);
         } else {
           this.ruta.navigate(['/home/productos']);
         }
