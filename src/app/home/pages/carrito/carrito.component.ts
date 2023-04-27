@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from 'src/app/interfaces/home/product.interface';
 import { HomeService } from '../../services/home.service';
 import { Carrito } from 'src/app/interfaces/home/carrito.interface';
 import { Notyf } from 'notyf';
 import { HttpHeaders } from '@angular/common/http';
-import jwt_decode from 'jwt-decode';
 @Component({
   selector: 'app-carrito',
   templateUrl: './carrito.component.html',
@@ -36,7 +34,7 @@ export class CarritoComponent implements OnInit {
       dismissible: false,
     });
   }
-
+  // mostrar mensaje de error
   mostrarMensajeError(mensaje: string) {
     this.notyf.error({
       message: mensaje,
@@ -52,13 +50,16 @@ export class CarritoComponent implements OnInit {
     });
   }
 
+  /**
+   Esta función recupera el carrito de compras del 
+   usuario del servidor y calcula el precio total 
+   de los productos en el carrito.
+   */
   getCart() {
     const token: string | null = localStorage.getItem('token');
 
     if (token !== null) {
       const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-      // const decoded: any = jwt_decode(token);
-      // const user = decoded.id;
       this.homeService.getShopCart(headers).subscribe({
         next: (data: Carrito[]) => {
           this.Productos = data;
@@ -71,6 +72,11 @@ export class CarritoComponent implements OnInit {
     }
   }
 
+  /**
+   * Esta función elimina un producto de un carrito de compras y actualiza el precio total de los products restantes
+   * @param {string} _id - El parámetro `_id` es una cadena que representa el identificador único de un
+   * producto en un carrito de compras. Se utiliza para identificar el producto que debe eliminarse en el carrito
+   */
   deleteCart(_id: string) {
     console.log('Borrando', _id);
     this.homeService.deleteShopCart(_id).subscribe({
@@ -80,7 +86,7 @@ export class CarritoComponent implements OnInit {
           (producto) => producto._id === _id
         );
         this.Productos.splice(index, 1);
-        // Actualizamos el total del carrito
+
         this.Total = 0;
         this.Productos.forEach((producto) => {
           this.Total += parseInt(producto.price);
@@ -90,13 +96,14 @@ export class CarritoComponent implements OnInit {
     });
   }
 
+  /**
+   * La función "comprar" comprueba si un usuario ha iniciado sesión y elimina todos los artículos de su carrito,
+   * mostrando un mensaje de éxito y restableciendo el costo total si tiene éxito, o un mensaje de error si
+   * el usuario no ha iniciado sesión.
+   */
   comprar() {
     const token: string | null = localStorage.getItem('token');
     if (token !== null) {
-      // const decoded: any = jwt_decode(token);
-
-      // const user = decoded.id;
-
       this.homeService.deleteAll().subscribe({
         next: (response) => {
           this.mostrarMensaje('Su compra se ha realizado con exito');

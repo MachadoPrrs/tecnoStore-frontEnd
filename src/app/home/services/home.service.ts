@@ -29,6 +29,7 @@ export class HomeService {
     return this.http.post<any>(url, cart);
   }
 
+  // obtiene todos los productos del carrito
   getShopCart(headers: any): Observable<Carrito[]> {
     const url = `${this.apiURL}${this.shopCart}`;
     return this.http
@@ -36,7 +37,7 @@ export class HomeService {
       .pipe(map((response) => response.data.carritos));
   }
 
-  // Borrar productos del carrito
+  // Borrar productos del carrito por id
   deleteShopCart(_id: string): Observable<any> {
     const url = `${this.apiURL}${this.shopCart}/${_id}`;
     return this.http.delete<any>(url);
@@ -50,16 +51,14 @@ export class HomeService {
       .pipe(map((response) => response.data.product));
   }
 
+  // Busca un producto en especifico
   searchProduct(termino: string): Observable<any> {
     const modelo = 'products';
     const url = `${this.apiURL}${this.searchEndpoint}/${modelo}/${termino}`;
     return this.http.get<any>(url).pipe(map((response) => response.results[0]));
   }
-  // deleteAll(user: string): Observable<any> {
-  //   const url = `${this.apiURL}${this.shopCart}/deleteAll/${user}`;
-  //   return this.http.delete<any>(url);
-  // }
 
+  // envia el token via header y borra todo lo que esta guardado
   deleteAll(): Observable<any> {
     const url = `${this.apiURL}${this.shopCart}/deleteAll`;
     const headers = new HttpHeaders().set(

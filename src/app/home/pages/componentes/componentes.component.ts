@@ -54,6 +54,7 @@ export class ComponentesComponent implements OnInit {
     });
   }
 
+  // mostrar mensaje de error
   mostrarMensajeError(mensaje: string) {
     this.notyf.error({
       message: mensaje,
@@ -69,7 +70,14 @@ export class ComponentesComponent implements OnInit {
     });
   }
 
-  // agregar a favorito
+  /**
+   * Esta función agrega un artículo al carrito de compras
+   * del usuario y requiere que el usuario inicie sesión
+   * @param {any} item - any (puede ser cualquier tipo de dato)
+   * @returns Si no se cumple la condición `if (token !== null)`, la función regresará sin ninguna
+    valor. Si se cumple la condición, la función ejecutará el
+   `this.homeService.postShopCart(itemConUser).subscribe()` y no devolverá ningún valor.
+   */
   agregarFavorito(item: any) {
     const token: string | null = localStorage.getItem('token');
     if (token !== null) {
@@ -93,6 +101,7 @@ export class ComponentesComponent implements OnInit {
     }
   }
 
+  //Esta función recupera productos de un servicio y los asigna a una variable.
   getProducts() {
     this.homeService.getProducts().subscribe({
       next: (data) => (this.Productos = data),
@@ -100,7 +109,10 @@ export class ComponentesComponent implements OnInit {
     });
   }
 
-  // BUSCADOR
+  /**
+   *Esta función busca un producto utilizando un término de búsqueda
+    y muestra un mensaje de error si no se encuentra el producto
+   */
   buscar() {
     this.homeService.searchProduct(this.terminoBusqueda.termino).subscribe({
       next: (data) => {

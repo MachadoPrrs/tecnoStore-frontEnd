@@ -20,7 +20,6 @@ export class AgregarComponent implements OnInit {
     fabricante: '',
     descripcion: '',
     price: '',
-    // category: 'default',
     photo: '',
   };
 
@@ -40,6 +39,7 @@ export class AgregarComponent implements OnInit {
     });
   }
 
+  // muestra un mensaje de error
   mostrarMensajeError(mensaje: string) {
     this.notyf.error({
       message: mensaje,
@@ -60,6 +60,10 @@ export class AgregarComponent implements OnInit {
     this.getProducts();
   }
 
+  /**
+  * Esta función crea un nuevo producto o actualiza uno existente con los datos y pantallas proporcionados
+    mensajes de error si alguno de los campos obligatorios está vacío.
+  */
   createProduct() {
     if (
       this.productCreate.name.trim() === '' ||
@@ -99,13 +103,12 @@ export class AgregarComponent implements OnInit {
       fabricante: '',
       descripcion: '',
       price: '',
-      // category: 'default',
       photo: '',
     };
     this.getProducts();
   }
 
-  // get all products
+  // Obtiene todos los productos
   getProducts() {
     this.adminService.getProducts().subscribe({
       next: (data) => (this.products = data),
@@ -113,6 +116,11 @@ export class AgregarComponent implements OnInit {
     });
   }
 
+  /**
+  * Esta función elimina un producto y muestra un mensaje de éxito o error.
+  * @param {string} _id - El parámetro "_id" es una cadena que representa el identificador único de un
+   producto que necesita ser eliminado.
+  */
   borrarProducto(_id: string) {
     this.adminService.deleteProduct(_id).subscribe({
       next: (response) => this.mostrarMensaje('Producto Borrado'),
@@ -121,6 +129,14 @@ export class AgregarComponent implements OnInit {
     this.getProducts();
   }
 
+  /**
+   * La función "editarProducto" establece el indicador "editar" en verdadero y asigna los valores de un determinado producto
+   * a"productCreate".
+   * @param {any} producto - El parámetro "producto" es un objeto que representa un producto. Él
+    contiene propiedades como "_id", "nombre", "fabricante", "descripcion", "precio" y "foto". El
+    función "editarProducto" toma este objeto como entrada y establece los valores de las propiedades a la
+    "producto"
+   */
   editarProducto(producto: any) {
     this.editar = true;
     this.productID = producto._id;
@@ -132,11 +148,4 @@ export class AgregarComponent implements OnInit {
       photo: producto.photo,
     };
   }
-
-  // this.adminService
-  //   .updateProduct(this.productCreate, producto._id)
-  //   .subscribe({
-  //     next: (response) => this.mostrarMensaje('Producto Actualizado'),
-  //     error: (err) => console.log(err),
-  //   });
 }

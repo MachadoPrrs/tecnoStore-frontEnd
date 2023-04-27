@@ -7,9 +7,13 @@ import * as mapboxgl from 'mapbox-gl';
   styleUrls: ['./contacto.component.css'],
 })
 export class ContactoComponent implements OnInit {
+  // Token de la api del mapa
   private tokenMapBox: string =
     'pk.eyJ1IjoiZGFya2NyZXkiLCJhIjoiY2xnYmIzM3BpMTF5aDNub3dhajg2OTY5ZiJ9.hNCeEmgaU0lm2McxcyA14Q';
 
+  /*
+   Aqui se llama la api del mapa
+  */
   ngOnInit(): void {
     (mapboxgl as any).accessToken = this.tokenMapBox;
     const map = new mapboxgl.Map({

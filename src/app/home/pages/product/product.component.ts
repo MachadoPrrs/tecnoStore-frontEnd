@@ -28,10 +28,12 @@ export class ProductComponent implements OnInit {
     ratingsAverage: 0,
   };
 
+  // cuando inicializa muestra el producto obtenido por id
   ngOnInit(): void {
     this.getProductById();
   }
 
+  // obtiene un producto por id
   getProductById() {
     this.homeService.getProduct(this.id).subscribe({
       next: (data) => {

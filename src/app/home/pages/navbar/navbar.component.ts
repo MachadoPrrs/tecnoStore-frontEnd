@@ -29,6 +29,7 @@ export class NavbarComponent implements OnInit {
     });
   }
 
+  //Esta funcion verifica si el token existe en el local storage
   verificarToken() {
     if (localStorage.getItem('token')) {
       this.existe_token = true;

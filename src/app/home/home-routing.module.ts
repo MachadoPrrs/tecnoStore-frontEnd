@@ -9,13 +9,13 @@ import { ErrorPageComponent } from '../shared/error-page/error-page.component';
 import { ContactoComponent } from './pages/contacto/contacto.component';
 import { ComponentesComponent } from './pages/componentes/componentes.component';
 
+// Definir las rutas hijas
 const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
     children: [
       { path: 'productos', component: ProductsComponent },
-      // { path: 'buscar', component: BuscarComponent },
       { path: 'carrito', component: CarritoComponent },
       { path: 'componentes', component: ComponentesComponent },
       { path: 'contacto', component: ContactoComponent },

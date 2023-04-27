@@ -14,6 +14,8 @@ export class ProductsComponent implements OnInit {
   notyf = new Notyf();
 
   constructor(private homeService: HomeService) {}
+
+  // cuando inicializa el componente llama los productos
   ngOnInit(): void {
     this.getProducts();
   }
@@ -34,6 +36,7 @@ export class ProductsComponent implements OnInit {
     });
   }
 
+  // muestra un mensaje de error
   mostrarMensajeError(mensaje: string) {
     this.notyf.error({
       message: mensaje,
@@ -55,7 +58,7 @@ export class ProductsComponent implements OnInit {
     if (token !== null) {
       const decoded: any = jwt_decode(token);
       const user = decoded.id;
-      console.log(user);
+      // guarda el usuario en los items para referenciarlo en la base de datos
       const itemConUser = {
         ...item,
         user: user,
@@ -73,6 +76,7 @@ export class ProductsComponent implements OnInit {
     }
   }
 
+  // obtiene todos los productos
   getProducts() {
     this.homeService.getProducts().subscribe({
       next: (data) => (this.Productos = data),

@@ -14,11 +14,13 @@ export class AdminService {
   private createProductEndPoint: string = 'api/v1/products/';
   private getProductEndPoint: string = 'api/v1/products/';
 
+  // crea un producto
   createProduct(product: any): Observable<any> {
     const url = `${this.apiURL}${this.createProductEndPoint}`;
     return this.http.post<any>(url, product);
   }
 
+  // obtiene todos los productos
   getProducts(): Observable<Product[]> {
     const url = `${this.apiURL}${this.getProductEndPoint}`;
     return this.http
@@ -26,11 +28,13 @@ export class AdminService {
       .pipe(map((response) => response.data.products));
   }
 
+  // borra un producto
   deleteProduct(_id: string): Observable<any> {
     const url = `${this.apiURL}${this.getProductEndPoint}/${_id}`;
     return this.http.delete<any>(url);
   }
 
+  // actualiza un producto
   updateProduct(product: any, _id: string): Observable<any> {
     const url = `${this.apiURL}${this.getProductEndPoint}/${_id}`;
     return this.http.patch<any>(url, product);
